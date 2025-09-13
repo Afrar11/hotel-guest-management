@@ -32,18 +32,22 @@ export default function GuestDetail() {
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Guest Detail</h1>
       <div className="space-y-3">
-        {Object.keys(guest).map(
-          (key) =>
-            ["first_name", "last_name", "email", "phone", "address", "date_of_birth"].includes(key) && (
-            <input
-                key={key}
-                type={key === "date_of_birth" ? "date" : "text"}
-                value={guest[key] || ""}
-                onChange={(e) => setGuest({ ...guest, [key]: e.target.value })}
-                className="border p-2 rounded w-full"
-              />
-            )
-        )}
+        {["first_name", "last_name", "email", "phone", "address", "date_of_birth"].map((key) => (
+          <input
+            key={key}
+            type={key === "date_of_birth" ? "date" : "text"}
+            value={
+              key === "date_of_birth"
+                ? (guest.date_of_birth ? guest.date_of_birth.slice(0, 10) : "")
+                : (typeof guest[key] === "string" || typeof guest[key] === "number"
+                    ? guest[key]
+                    : "")
+            }
+            onChange={(e) => setGuest({ ...guest, [key]: e.target.value })}
+            className="border p-2 rounded w-full"
+            placeholder={key.replace("_", " ")}
+          />
+        ))}
       </div>
       <div className="mt-4 space-x-2">
         <button

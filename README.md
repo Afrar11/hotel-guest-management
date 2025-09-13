@@ -76,8 +76,8 @@ Go to http://127.0.0.1:8090/_/
 
 Use the following credentials:
 
-Email: admin@example.com
-Password: Admin123!
+Email: mohamedafrar98@yahoo.com
+Password: IamBatman@2025
 
 3. Set Up the Frontend
 a. Navigate to the client directory
